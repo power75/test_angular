@@ -1,1 +1,20 @@
-<h1>{{ title }}</h1>
+<div class="main">
+  <h1>{{ componentTitle }}</h1>
+  <label for="addItemInput">What would you like to do today?</label>
+
+  <input
+    #newItem
+    placeholder="add an item"
+    (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+    class="lg-text-input"
+    id="addItemInput" />
+  <button class="btn-primary" (click)="addItem(newItem.value); newItem.value = ''">Add</button>
+  <!--クリックまたはaddボタンを押すことでnewItemの値をaddItemの引数に入れる-->
+  <ul>
+    <!--get items()で取得したitems各要素をループして表示-->
+    <!--trackで一意の識別子を指定すると不要なDOM操作を減らせる。(user_id等)-->
+    @for(item of items; track item.description){
+      <li>{{item.description}}</li>
+    }
+  </ul>
+</div>
