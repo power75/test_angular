@@ -10,6 +10,31 @@
     id="addItemInput" />
   <button class="btn-primary" (click)="addItem(newItem.value); newItem.value = ''">Add</button>
   <!--クリックまたはaddボタンを押すことでnewItemの値をaddItemの引数に入れる-->
+
+  <!-- Buttons that show all, still to do, or done items on click -->
+  <div class="btn-wrapper">
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'all'"
+      (click)="filter = 'all'">
+      All
+    </button>
+
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'active'"
+      (click)="filter = 'active'">
+      To Do
+    </button>
+
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'done'"
+      (click)="filter = 'done'">
+      Done
+    </button>
+  </div>
+
   <h2>
     {{items.length}}
     <span> @if (items.length === 1) { item } @else { items } </span>

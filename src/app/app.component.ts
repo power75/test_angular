@@ -13,8 +13,9 @@ import { ItemComponent } from "./item/item.component";
 export class AppComponent {
   componentTitle = "My To Do List";
 
-  filter: "all" | "active" | "done" = "all";
-
+  filter: "all" | "active" | "done" = "all"; 
+  //union型、3つのどれかの文字列を持つ。初期値all
+  
   allItems = [
     { description: "eat", done: true },
     { description: "sleep", done: false },
