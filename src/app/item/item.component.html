@@ -1,0 +1,37 @@
+<div class="item">
+    <input
+      [id]="item.description"
+      type="checkbox"
+      (change)="item.done = !item.done"
+      [checked]="item.done" />
+    <label [for]="item.description">{{item.description}}</label>
+  
+    @if (!editable) {
+    <div class="btn-wrapper">
+      <button class="btn btn-edit" (click)="editable = !editable">Edit</button>
+      <button class="btn btn-warn" (click)="remove.emit()">Delete</button>
+    </div>
+    }
+  
+    <!-- このセクションは、ユーザーが Edit ボタンをクリックした場合のみ表示されます -->
+    @if (editable) {
+    <div>
+      <input
+        class="sm-text-input"
+        placeholder="edit item"
+        [value]="item.description"
+        #editedItem
+        
+        (keyup.enter)="saveItem(editedItem.value)" />
+        <!-- テンプレート変数(#editedItem)にinputの値が格納される。-->
+        <!-- saveボタンを押すとsaveItemメソッドによりテンプレート変数の値がdescriptionに代入される-->    
+  <div class="btn-wrapper">
+        <button class="btn" (click)="editable = !editable">Cancel</button>
+        <button class="btn btn-save" (click)="saveItem(editedItem.value)">
+          Save
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+  

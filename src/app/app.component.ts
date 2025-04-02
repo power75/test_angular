@@ -1,12 +1,14 @@
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { Item } from "./item";
+import { ItemComponent } from "./item/item.component";
 
 @Component({
   standalone: true,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [CommonModule],
+  imports: [CommonModule, ItemComponent],
 })
 export class AppComponent {
   componentTitle = "My To Do List";
@@ -37,4 +39,9 @@ export class AppComponent {
       this.filter === "done" ? item.done : !item.done 
     ); //this.filterがdoneならdone: trueの配列を返す。
   }    //それ以外ならdone: falseの配列を返す。
+
+  remove(item: Item) {
+    this.allItems.splice(this.allItems.indexOf(item), 1);
+  }
+  
 }
