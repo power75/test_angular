@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'; //appComponentとデータを共有できる
 import { CommonModule } from "@angular/common"; //@ifなどが使える
 import { Item } from "../item"; //コンポーネントにitemが何かを理解できる。
+import data from './plans.json';
 
 @Component({
   selector: 'app-item',
@@ -22,3 +23,6 @@ export class ItemComponent {
     this.item.description = description;
   }
 }
+
+
+

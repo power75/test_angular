@@ -2,14 +2,16 @@ import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Item } from "./item";
 import { ItemComponent } from "./item/item.component";
+import { OptimizerComponent } from "./optimizer/optimizer.component";
 
 @Component({
   standalone: true,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [CommonModule, ItemComponent],
+  imports: [CommonModule, ItemComponent, OptimizerComponent],
 })
+
 export class AppComponent {
   componentTitle = "My To Do List";
 

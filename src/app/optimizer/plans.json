@@ -1,0 +1,25 @@
+{
+    "campaigns": [
+      { "id": 1, "name": "SNS広告キャンペーン", "cost": 4, "effect": 300 },
+      { "id": 2, "name": "メールマーケティング施策", "cost": 2, "effect": 200 },
+      { "id": 3, "name": "インフルエンサー起用", "cost": 3, "effect": 250 },
+      { "id": 4, "name": "テレビCM", "cost": 5, "effect": 500 },
+      { "id": 5, "name": "期間限定割引キャンペーン", "cost": 1, "effect": 100 },
+      { "id": 6, "name": "リターゲティング広告", "cost": 3, "effect": 220 },
+      { "id": 7, "name": "SEO対策強化", "cost": 4, "effect": 350 },
+      { "id": 8, "name": "ポップアップ店舗開催", "cost": 5, "effect": 400 },
+      { "id": 9, "name": "動画マーケティング", "cost": 2, "effect": 180 },
+      { "id": 10, "name": "ユーザー体験改善キャンペーン", "cost": 5, "effect": 450 },
+      { "id": 11, "name": "SNSフォロー促進企画", "cost": 1, "effect": 90 },
+      { "id": 12, "name": "クーポン配布施策", "cost": 2, "effect": 150 },
+      { "id": 13, "name": "ポップアップストアイベント", "cost": 3, "effect": 260 },
+      { "id": 14, "name": "新規会員登録キャンペーン", "cost": 2, "effect": 180 },
+      { "id": 15, "name": "ブランド強化キャンペーン", "cost": 4, "effect": 320 },
+      { "id": 16, "name": "オンラインイベント開催", "cost": 3, "effect": 210 },
+      { "id": 17, "name": "クーポン配布キャンペーン", "cost": 1, "effect": 120 },
+      { "id": 18, "name": "顧客紹介プログラム", "cost": 2, "effect": 190 },
+      { "id": 19, "name": "製品レビュー促進企画", "cost": 1, "effect": 80 },
+      { "id": 20, "name": "広告コンテンツの最適化", "cost": 3, "effect": 230 }
+    ],
+    "budget": 15
+  }
