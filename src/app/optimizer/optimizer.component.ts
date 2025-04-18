@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import data from './plans.json';
 
 @Component({
   selector: 'app-optimizer',
