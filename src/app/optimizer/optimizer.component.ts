@@ -9,7 +9,48 @@ import data from './plans.json';
   styleUrl: './optimizer.component.scss'
 })
 export class OptimizerComponent {
+  optimizer!: Optimizer; 
+  //optimizerがOptimizerクラスで初期化されていないため、
+  // ! を使用して、TypeScriptに「このプロパティは必ず初期化される」と伝える
 
+  constructor(){
+    try { 
+      //try-catch
+      // インスタンス生成
+      //id?として存在しない場合はundefinedとして扱う
+      const campaigns = data.campaigns.map((c: { id?: number; name?: string; cost?: number; effect?: number }) => {
+          if (typeof c.id !== "number"){
+              throw new Error(`キャンペーンデータが不正です。idが無効です。`);
+          } else if (typeof c.name !== "string") {
+              throw new Error(`キャンペーンデータが不正です。nameが無効です。`);
+          } else if (typeof c.cost !== "number") {
+              throw new Error(`キャンペーンデータが不正です。costが無効です。`);
+          } else if (typeof c.effect !== "number") {
+              throw new Error(`キャンペーンデータが不正です。effectが無効です。`);
+          }
+          return new Campaign(c.id, c.name, c.cost, c.effect);
+      });
+    
+      if(typeof data.budget !== "number" || data.budget <= 0 ){
+          throw new Error('予算は正の整数で入力してください。')
+      }
+    
+      const budget = new Budget(data);
+      this.optimizer = new Optimizer(campaigns, budget); //初期化。オブジェクト生成
+    } catch (error: any) {
+      // エラーが発生した場合にメッセージを返す
+      console.error("エラーが発生しました。", error.message);
+      console.log("jsonファイルが正しいか確認してください。");
+    }
+    
+    console.log(this.optimizer);
+  }
+
+  campaignEffectOptimization() {
+    if (this.optimizer) {
+      this.optimizer.campaignEffectOptimization();
+    }
+  }
 }
 //キャンペーンデータ
 export class Campaign{
@@ -35,8 +76,8 @@ export class Optimizer{
   private budget: Budget;
 
   constructor(campaigns: Campaign[], budget: Budget) {
-      this.campaigns = campaigns;
-      this.budget = budget; // Budgetインスタンスをプロパティとして保持
+      this.campaigns = campaigns; //初期化
+      this.budget = budget; // 初期化。Budgetインスタンスをプロパティとして保持
   }
 
   campaignEffectOptimization(){
@@ -79,35 +120,3 @@ export class Optimizer{
   }
 }
 
-try { 
-  //try-catch
-  // インスタンス生成
-  //id?として存在しない場合はundefinedとして扱う
-  const campaigns = data.campaigns.map((c: { id?: number; name?: string; cost?: number; effect?: number }) => {
-      if (typeof c.id !== "number"){
-          throw new Error(`キャンペーンデータが不正です。idが無効です。`);
-      } else if (typeof c.name !== "string") {
-          throw new Error(`キャンペーンデータが不正です。nameが無効です。`);
-      } else if (typeof c.cost !== "number") {
-          throw new Error(`キャンペーンデータが不正です。costが無効です。`);
-      } else if (typeof c.effect !== "number") {
-          throw new Error(`キャンペーンデータが不正です。effectが無効です。`);
-      }
-      return new Campaign(c.id, c.name, c.cost, c.effect);
-  });
-
-  if(typeof data.budget !== "number" || data.budget <= 0 ){
-      throw new Error('予算は正の整数で入力してください。')
-  }
-
-  const budget = new Budget(data);
-
-  const optimizer = new Optimizer(campaigns, budget);
-
-  // 関数呼び出し
-  optimizer.campaignEffectOptimization();
-} catch (error: any) {
-  // エラーが発生した場合にメッセージを返す
-  console.error("エラーが発生しました。", error.message);
-  console.log("jsonファイルが正しいか確認してください。");
-}
